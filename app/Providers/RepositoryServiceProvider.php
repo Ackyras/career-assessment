@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Repositories\Interfaces\CityInterface;
+// use App\Repositories\API\CityRepository;
+// use App\Repositories\API\ProvinceRepository;
 use App\Repositories\Database\CityRepository;
-use App\Repositories\Interfaces\ProvinceInterface;
 use App\Repositories\Database\ProvinceRepository;
+use App\Repositories\Interfaces\CityInterface;
+use App\Repositories\Interfaces\ProvinceInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {

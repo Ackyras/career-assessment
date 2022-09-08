@@ -20,10 +20,10 @@ class ProvinceRepository implements ProvinceInterface
             )
             ->get();
         // return $provinces;
-        if ($provinces->count() > 1) {
-            return ProvinceResource::collection($provinces);
-        } else {
+        if ($provinces->count() == 1) {
             return new ProvinceResource($provinces[0]);
+        } else {
+            return ProvinceResource::collection($provinces);
         }
     }
 }
