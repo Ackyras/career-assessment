@@ -16,10 +16,11 @@ class CityResource extends JsonResource
     {
         return [
             'city_id'           =>  $this->id,
-            'name'              =>  $this->name,
+            'province_id'       =>  $this->province->id,
+            'province'          =>  $this->province->name,
             'type'              =>  $this->type,
+            'city_name'         =>  $this->name,
             'postal_code'       =>  $this->postal_code,
-            'province'          =>  new ProvinceResource($this->province)
         ];
     }
 }
