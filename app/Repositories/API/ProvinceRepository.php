@@ -10,14 +10,13 @@ use App\Repositories\Interfaces\ProvinceInterface;
 
 class ProvinceRepository implements ProvinceInterface
 {
-    public function get(Request $request)
+    public function get(array $queries)
     {
         $client = new Client();
         $rajaOngkirService = new RajaOngkirService($client);
         $provinces = null;
-        $query = $request->query();
-        if ($request->query()) {
-            $provinces = $rajaOngkirService->fetch('province', $query);
+        if ($queries) {
+            $provinces = $rajaOngkirService->fetch('province', $queries);
             return $provinces['rajaongkir']['results'];
         } else {
             $provinces = $rajaOngkirService->fetch('province');

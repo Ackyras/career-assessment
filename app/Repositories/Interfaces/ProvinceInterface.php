@@ -6,5 +6,5 @@ use Illuminate\Http\Request;
 
 interface ProvinceInterface
 {
-    public function get(Request $request);
+    public function get(array $queries);
 }

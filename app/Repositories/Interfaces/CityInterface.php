@@ -6,5 +6,5 @@ use Illuminate\Http\Request;
 
 interface CityInterface
 {
-    public function get(Request $request);
+    public function get(array $queries);
 }

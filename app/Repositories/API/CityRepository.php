@@ -9,13 +9,12 @@ use GuzzleHttp\Client;
 
 class CityRepository implements CityInterface
 {
-    public function get(Request $request)
+    public function get(array $queries)
     {
         $client = new Client();
         $rajaOngkirService = new RajaOngkirService($client);
-        $query = $request->query();
-        if ($request->query()) {
-            $cities = $rajaOngkirService->fetch('city', $query);
+        if ($queries) {
+            $cities = $rajaOngkirService->fetch('city', $queries);
             return $cities['rajaongkir']['results'];
         } else {
             $cities = $rajaOngkirService->fetch('city');

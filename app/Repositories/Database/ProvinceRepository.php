@@ -9,13 +9,13 @@ use App\Repositories\Interfaces\ProvinceInterface;
 
 class ProvinceRepository implements ProvinceInterface
 {
-    public function get(Request $request)
+    public function get(array $queries)
     {
         $provinces = Province::query()
             ->when(
-                $request->query('id'),
-                function ($query) use ($request) {
-                    $query->find($request->query('id'));
+                isset($queries['id']),
+                function ($query) use ($queries) {
+                    $query->find($queries['id']);
                 },
             )
             ->get();

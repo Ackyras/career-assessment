@@ -23,7 +23,7 @@ class SearchController extends Controller
         return response()->json(
             [
                 'query'     =>  $request->query(),
-                'result'    =>  $this->provinceInterface->get($request),
+                'result'    =>  $this->provinceInterface->get($request->query()),
             ],
             status: 200,
         );
@@ -34,7 +34,7 @@ class SearchController extends Controller
         return response()->json(
             [
                 'query'     =>  $request->query(),
-                'result'    =>  $this->cityInterface->get($request),
+                'result'    =>  $this->cityInterface->get($request->query()),
             ],
             status: 200,
         );

@@ -9,19 +9,19 @@ use App\Repositories\Interfaces\CityInterface;
 
 class CityRepository implements CityInterface
 {
-    public function get(Request $request)
+    public function get(array $queries)
     {
         $cities = City::query()
             ->when(
-                $request->query('id'),
-                function ($query) use ($request) {
-                    $query->find($request->query('id'));
+                isset($queries['id']),
+                function ($query) use ($queries) {
+                    $query->find($queries['id']);
                 },
             )
             ->when(
-                $request->query('province'),
-                function ($query) use ($request) {
-                    $query->where('province_id', $request->query('province'));
+                isset($queries['province']),
+                function ($query) use ($queries) {
+                    $query->where('province_id', $queries['province']);
                 },
             )
             ->with('province')
