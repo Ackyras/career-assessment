@@ -25,6 +25,21 @@ class ProvinceTest extends TestCase
         $this->assertTrue(count($provinces) == $provinces_count);
     }
 
+    public function test_get_all_province_with_direct_api()
+    {
+        $APIRepository = new APIProvinceRepository();
+
+        $queries = [];
+
+        $provinces = $APIRepository->get($queries);
+
+        $provinces_count = Province::count();
+
+        if (count($provinces) == $provinces_count) {
+            $this->assertTrue(true);
+        }
+    }
+
     public function test_check_if_a_data_exists_from_database()
     {
         $province = new ProvinceResource(Province::inRandomOrder()->first());
@@ -39,21 +54,6 @@ class ProvinceTest extends TestCase
             if ($value['province_id'] == $province['province_id'] && $value['province'] == $province['province']) {
                 $this->assertTrue(true);
             }
-        }
-    }
-
-    public function test_get_all_province_with_direct_api()
-    {
-        $APIRepository = new APIProvinceRepository();
-
-        $queries = [];
-
-        $provinces = $APIRepository->get($queries);
-
-        $provinces_count = Province::count();
-
-        if (count($provinces) == $provinces_count) {
-            $this->assertTrue(true);
         }
     }
 

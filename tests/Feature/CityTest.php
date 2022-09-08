@@ -25,6 +25,21 @@ class CityTest extends TestCase
         $this->assertTrue(count($cities) == $cities_count);
     }
 
+    public function test_get_all_citiy_with_direct_api()
+    {
+        $APIRepository = new APICityRepository();
+
+        $queries = [];
+
+        $cities = $APIRepository->get($queries);
+
+        $cities_count = City::count();
+
+        if (count($cities) == $cities_count) {
+            $this->assertTrue(true);
+        }
+    }
+
     public function test_check_if_a_data_exists_from_database()
     {
         $city = new CityResource(City::inRandomOrder()->first());
@@ -39,21 +54,6 @@ class CityTest extends TestCase
             if ($value['city_id'] == $city['city_id'] && $value['city'] == $city['city']) {
                 $this->assertTrue(true);
             }
-        }
-    }
-
-    public function test_get_all_citiy_with_direct_api()
-    {
-        $APIRepository = new APICityRepository();
-
-        $queries = [];
-
-        $cities = $APIRepository->get($queries);
-
-        $cities_count = City::count();
-
-        if (count($cities) == $cities_count) {
-            $this->assertTrue(true);
         }
     }
 
